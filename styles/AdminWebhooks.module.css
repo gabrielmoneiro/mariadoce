@@ -1,0 +1,471 @@
+.webhooksContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.header h2 {
+  font-size: 24px;
+  color: #333;
+  margin: 0;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.navButton {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.navButton:hover {
+  background-color: #e0e0e0;
+}
+
+.webhooksSection {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sectionHeader h3 {
+  font-size: 18px;
+  margin: 0;
+}
+
+.addButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #45a049;
+}
+
+.formContainer {
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.formContainer h4 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="url"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.formGroup small {
+  display: block;
+  margin-top: 5px;
+  color: #666;
+  font-size: 12px;
+}
+
+.eventsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.eventCheckbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancelButton {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.saveButton {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 15px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.saveButton:hover {
+  background-color: #0b7dda;
+}
+
+.webhooksList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.webhookCard {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.webhookHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.webhookTitle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.webhookTitle h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.statusActive {
+  background-color: #4CAF50;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.statusInactive {
+  background-color: #f44336;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+.webhookActions {
+  display: flex;
+  gap: 8px;
+}
+
+.webhookActions button {
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  cursor: pointer;
+  border: none;
+}
+
+.activateButton {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.deactivateButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.testButton {
+  background-color: #2196F3;
+  color: white;
+}
+
+.editButton {
+  background-color: #FFC107;
+  color: black;
+}
+
+.deleteButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.webhookDetails {
+  padding: 15px;
+}
+
+.detailItem {
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.detailStats {
+  display: flex;
+  gap: 20px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #e0e0e0;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #666;
+}
+
+.statValue {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.webhookFooter {
+  padding: 10px 15px;
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.viewLogsButton {
+  background: none;
+  border: none;
+  color: #2196F3;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+}
+
+.logsSection {
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e0e0e0;
+}
+
+.logsSection h5 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.logsTable {
+  overflow-x: auto;
+}
+
+.logsTable table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.logsTable th,
+.logsTable td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.logsTable th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.successRow {
+  background-color: rgba(76, 175, 80, 0.1);
+}
+
+.failureRow {
+  background-color: rgba(244, 67, 54, 0.1);
+}
+
+.emptyState {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+}
+
+.alertSuccess {
+  background-color: #dff0d8;
+  color: #3c763d;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alertError {
+  background-color: #f2dede;
+  color: #a94442;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.alertSuccess button,
+.alertError button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.webhookInfo {
+  background-color: #e8f4fd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.webhookInfo h3 {
+  margin-top: 0;
+  color: #0d47a1;
+  font-size: 18px;
+}
+
+.webhookInfo h4 {
+  color: #0d47a1;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.webhookInfo ol {
+  padding-left: 20px;
+}
+
+.webhookInfo li {
+  margin-bottom: 8px;
+}
+
+.webhookInfo pre {
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 18px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .headerButtons {
+    width: 100%;
+  }
+  
+  .navButton {
+    flex: 1;
+  }
+  
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .addButton {
+    width: 100%;
+  }
+  
+  .webhookHeader {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .webhookActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .eventsGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .detailStats {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

@@ -1,0 +1,90 @@
+/* BottomNavigation.module.css */
+
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--light-pink);
+  border-top: 1px solid var(--border-light);
+  padding: var(--spacing-sm) 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+}
+
+.bottomNavContent {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.navItem.active {
+  color: var(--text-primary);
+}
+
+.navItem:hover {
+  text-decoration: none;
+  color: var(--accent-red);
+}
+
+.navIconContainer {
+  position: relative;
+  margin-bottom: var(--spacing-xs);
+}
+
+.navIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.navBadge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: var(--accent-red);
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  border: 2px solid var(--card-bg);
+}
+
+.navLabel {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Mobile ajustes */
+@media (max-width: 768px) {
+  .bottomNav {
+    width: 100%;
+    max-width: 100%; /* expande 100% no mobile */
+    left: 0;
+    transform: none;
+  }
+}
+
+/* Desktop ajustes */
+@media (min-width: 769px) {
+  .bottomNav {
+    width: 100%;
+    max-width: 1200px; /* exemplo de limite maior */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

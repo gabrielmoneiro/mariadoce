@@ -1,0 +1,585 @@
+.dashboardContainer {
+  padding: 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #667eea;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+  gap: 1rem;
+  min-height: 80px;
+}
+
+.header:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.headerContent {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header h2 {
+  margin: 0 0 0.5rem 0;
+  color: #2d3748;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.header p {
+  margin: 0;
+  color: #718096;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 500;
+}
+
+.headerButtons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.headerButtons button {
+  white-space: nowrap;
+  min-width: fit-content;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.logoutButton {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.logoutButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.logoutButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(229, 62, 62, 0.3);
+}
+
+.logoutButton:hover::before {
+  left: 100%;
+}
+
+.crudSection {
+  margin-top: 2rem;
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.crudSection:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.crudSection h3 {
+  margin-bottom: 2rem;
+  color: #2d3748;
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.crudSection h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.addButton {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+}
+
+.addButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.addButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(72, 187, 120, 0.3);
+}
+
+.addButton:hover::before {
+  left: 100%;
+}
+
+.productList {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.productList h4 {
+  margin-bottom: 1.5rem;
+  color: #4a5568;
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+}
+
+/* Container para scroll horizontal da tabela */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: visible;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background: white;
+}
+
+.productList table {
+  width: 100%;
+  min-width: 900px; /* Largura mínima para evitar compressão excessiva */
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 0;
+  background: white;
+}
+
+.productList th,
+.productList td {
+  padding: 1rem 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+}
+
+/* Colunas com larguras específicas */
+.productList th:nth-child(1), /* Imagem */
+.productList td:nth-child(1) {
+  width: 80px;
+  min-width: 80px;
+}
+
+.productList th:nth-child(2), /* Nome */
+.productList td:nth-child(2) {
+  width: 200px;
+  min-width: 150px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.productList th:nth-child(3), /* Categoria */
+.productList td:nth-child(3) {
+  width: 120px;
+  min-width: 100px;
+}
+
+.productList th:nth-child(4), /* Preço */
+.productList td:nth-child(4) {
+  width: 180px;
+  min-width: 150px;
+  white-space: normal;
+}
+
+.productList th:nth-child(5), /* Promoção */
+.productList td:nth-child(5) {
+  width: 100px;
+  min-width: 80px;
+}
+
+.productList th:nth-child(6), /* Destaque */
+.productList td:nth-child(6) {
+  width: 80px;
+  min-width: 70px;
+}
+
+.productList th:nth-child(7), /* Ações */
+.productList td:nth-child(7) {
+  width: 280px;
+  min-width: 250px;
+}
+
+.productList th {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.productList th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.productList th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.productList tr:hover {
+  background-color: #f7fafc;
+  transition: all 0.2s ease;
+}
+
+.productList img {
+  max-width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Container para botões de ação */
+.actionButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.productList button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.editButton {
+  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+  color: white;
+}
+
+.editButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(237, 137, 54, 0.3);
+}
+
+.deleteButton {
+  background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+  color: white;
+}
+
+.deleteButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.3);
+}
+
+.addHighlightButton {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+}
+
+.addHighlightButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+.removeHighlightButton {
+  background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+  color: white;
+}
+
+.removeHighlightButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(113, 128, 150, 0.3);
+}
+
+.settingsButton {
+  background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.settingsButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.settingsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
+}
+
+.settingsButton:hover::before {
+  left: 100%;
+}
+
+/* Responsividade aprimorada */
+@media (max-width: 1400px) {
+  .dashboardContainer {
+    padding: 1rem;
+  }
+  
+  .header {
+    padding: 1.25rem;
+  }
+  
+  .crudSection {
+    padding: 1.25rem;
+  }
+  
+  .productList table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .headerContent {
+    min-width: auto;
+    text-align: center;
+  }
+  
+  .headerButtons {
+    justify-content: center;
+    margin-top: 0;
+    gap: 0.5rem;
+  }
+  
+  .productList table {
+    min-width: 750px;
+  }
+  
+  .productList th,
+  .productList td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboardContainer {
+    padding: 0.75rem;
+  }
+  
+  .header {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .crudSection {
+    padding: 1rem;
+  }
+  
+  .productList table {
+    min-width: 700px;
+  }
+  
+  .headerButtons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  
+  .headerButtons button {
+    flex: 1;
+    min-width: 120px;
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardContainer {
+    padding: 0.5rem;
+  }
+  
+  .header {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    gap: 1rem;
+  }
+  
+  .headerButtons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .headerButtons button {
+    width: 100%;
+    max-width: none;
+    min-width: auto;
+  }
+  
+  .crudSection {
+    padding: 0.75rem;
+  }
+  
+  .productList table {
+    min-width: 650px;
+  }
+  
+  .productList th,
+  .productList td {
+    padding: 0.5rem 0.25rem;
+  }
+  
+  .productList img {
+    max-width: 40px;
+    height: 40px;
+  }
+  
+  .actionButtons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .productList button {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.7rem;
+    width: 100%;
+    min-width: auto;
+  }
+}
+
+/* Melhorias para telas muito grandes */
+@media (min-width: 1600px) {
+  .dashboardContainer {
+    padding: 2rem;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    padding: 2rem;
+  }
+  
+  .crudSection {
+    padding: 2rem;
+  }
+}
+
+/* Scroll personalizado para a tabela */
+.tableContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableContainer::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 4px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+}
+
+/* Indicador de scroll horizontal */
+.tableContainer::after {
+  content: '← Deslize horizontalmente para ver mais →';
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #718096;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@media (min-width: 1200px) {
+  .tableContainer::after {
+    display: none;
+  }
+}
+

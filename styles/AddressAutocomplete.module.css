@@ -1,0 +1,70 @@
+.autocompleteContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 1rem; /* Espaçamento abaixo do componente */
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.3rem;
+  background-color: var(--background-light);
+  color: var(--foreground-light);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.suggestionsList {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--card-background);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  border-radius: 0 0 0.3rem 0.3rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000; /* Para ficar sobre outros elementos */
+  box-shadow: var(--shadow-sm);
+}
+
+.suggestionItem {
+  padding: 0.75rem;
+  cursor: pointer;
+  color: var(--foreground-light);
+}
+
+.suggestionItem:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.loading,
+.error {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.loading {
+  color: var(--secondary-color);
+}
+
+.error {
+  color: red;
+  background-color: rgba(255,0,0,0.05);
+  border: 1px dashed red;
+  border-radius: 0.3rem;
+  margin-top: 0.5rem;
+}
+

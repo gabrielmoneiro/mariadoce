@@ -1,0 +1,219 @@
+.cepStepContainer,
+.addressFormContainer {
+  padding: 1.5rem;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 8px;
+  background-color: var(--card-background, #fff);
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-md, 0 4px 6px rgba(0,0,0,0.1));
+}
+
+.cepStepContainer h4,
+.addressFormContainer h4 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--foreground-light, #333);
+  font-weight: 600; /* Título um pouco mais forte */
+}
+
+.cepSubtext {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary-color, #666);
+}
+
+.cepInput {
+  display: block;
+  width: 60%; /* Um pouco mais estreito para o CEP */
+  min-width: 200px; /* Largura mínima */
+  margin: 0 auto 1rem auto;
+  padding: 0.85rem;
+  font-size: 1.6rem; 
+  text-align: center;
+  letter-spacing: 3px; 
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 4px;
+  background-color: var(--background-light, #f9f9f9);
+}
+
+.cepButton,
+.confirmButton,
+.backButton {
+  display: block;
+  width: 100%;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  border: none;
+  text-transform: uppercase; /* Botões em maiúsculas como na imagem */
+}
+
+.cepButton {
+  background-color: var(--primary-color, #FFB74D); /* Laranja mais claro como na imagem */
+  color: var(--button-text-dark, #424242); /* Texto mais escuro para contraste */
+  margin: 1rem auto; /* Centralizar e dar espaço */
+  width: 60%; /* Mesma largura do input de CEP */
+  min-width: 200px;
+}
+
+.cepButton:hover {
+  background-color: var(--primary-dark-color, #FFA726);
+}
+
+.cepButton:disabled {
+  background-color: #E0E0E0; /* Cinza mais claro para desabilitado */
+  color: #9E9E9E;
+  cursor: not-allowed;
+}
+
+.idkCepButton {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  color: var(--secondary-color, #757575); /* Cor mais neutra */
+  border: none;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.idkCepButton:hover {
+  text-decoration: underline;
+  color: var(--primary-color, #FF9800);
+}
+
+/* Address Form Styles */
+.formRow {
+  display: flex;
+  gap: 1rem; /* Espaço entre os campos na mesma linha */
+  margin-bottom: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem; 
+}
+
+.formRow .formGroup {
+  margin-bottom: 0; 
+}
+
+/* Ajustes para campos lado a lado */
+.formGroupRua {
+  flex: 3; /* Rua ocupa mais espaço */
+}
+
+.formGroupNumero {
+  flex: 1; /* Número ocupa menos espaço */
+}
+
+.formGroupCidade {
+  flex: 3; /* Cidade ocupa mais espaço */
+}
+
+.formGroupEstado {
+  flex: 1; /* Estado ocupa menos espaço */
+}
+
+.formGroup label {
+  margin-bottom: 0.4rem; /* Um pouco mais de espaço */
+  font-size: 0.85rem; /* Label um pouco menor */
+  font-weight: 500;
+  color: var(--foreground-light, #555);
+}
+
+.formGroup input[type="text"],
+.formGroup input[type="number"],
+.formGroup select {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 4px;
+  background-color: var(--background-light, #f9f9f9);
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+.formGroup input::placeholder {
+    color: #BDBDBD; /* Placeholder mais claro */
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: var(--primary-color, #FFB74D);
+  box-shadow: 0 0 0 2px rgba(255, 183, 77, 0.25);
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem; /* Mais espaço antes dos botões */
+  gap: 1rem; 
+}
+
+.backButton {
+  background-color: white;
+  color: var(--primary-color, #FFB74D); /* Texto laranja */
+  border: 1px solid var(--primary-color, #FFB74D); /* Borda laranja */
+  flex-basis: 48%; /* Para ocupar quase metade */
+}
+
+.backButton:hover {
+  background-color: #FFF3E0; /* Laranja bem clarinho no hover */
+}
+
+.confirmButton {
+  background-color: var(--primary-color, #FFB74D); /* Laranja como na imagem */
+  color: var(--button-text-dark, #424242);
+  flex-basis: 48%; /* Para ocupar quase metade */
+}
+
+.confirmButton:hover {
+  background-color: var(--primary-dark-color, #FFA726);
+}
+
+.confirmButton:disabled {
+  background-color: #E0E0E0;
+  color: #9E9E9E;
+  cursor: not-allowed;
+}
+
+.errorText {
+  color: var(--danger-color, #D32F2F);
+  background-color: var(--danger-background-light, #FFEBEE);
+  border: 1px solid var(--danger-color-light, #FFCDD2);
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.formGroup select {
+  /* Se for usar select para Estado, pode precisar de padding e height consistentes com inputs */
+  padding-right: 2rem; /* Espaço para a seta do select */
+  appearance: none; /* Remover estilo padrão do SO */
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23BDBDBD' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1.2em;
+}
+
+
+
+.readOnlyInput {
+  background-color: #f0f0f0; /* Cinza claro */
+  color: #555; /* Cor do texto mais escura para contraste */
+  cursor: not-allowed;
+  border: 1px solid #ccc;
+}
+

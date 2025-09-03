@@ -1,0 +1,337 @@
+:root {
+  /* Paleta de cores baseada na imagem Maria Doce - Design Rosa */
+  --primary-bg: #ef8ea1;        /* Rosa principal do fundo */
+  --card-bg: #FFFFFF;           /* Fundo dos cards brancos */
+  --page-bg: #FFFFFF;           /* Nova variável para o fundo da página (branco) */
+  --text-primary: #2C2C2C;      /* Texto principal escuro */
+  --text-secondary: #666666;    /* Texto secundário */
+  --accent-red: #E74C3C;        /* Vermelho dos destaques */
+  --accent-brown: #8B4513;      /* Marrom dos ícones */
+  --border-light: #E0E0E0;      /* Bordas claras */
+  --shadow-light: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-medium: 0 4px 12px rgba(0,0,0,0.15);
+  
+  /* Cores adicionais para o design rosa */
+  --secondary-pink: #F4C2C2;    /* Rosa mais claro para elementos */
+  --light-pink: #F8E8E8;       /* Rosa muito claro para seções */
+  
+  /* Configurações de Fonte */
+  --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-title: "Georgia", serif;
+  
+  /* Configurações Gerais */
+  --border-radius: 12px;
+  --border-radius-small: 8px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* Mapeamento para compatibilidade com código existente */
+  --brown-deep: var(--text-primary);
+  --cream-light: var(--primary-bg);
+  --caramel: var(--accent-red);
+  --rose-dust: #EBD4D0;
+  --sage-green: #A3B18A;
+  --white: var(--card-bg);
+  --gray-medium: var(--text-secondary);
+  --brown-light: var(--accent-brown);
+  --red: var(--accent-red);
+  --green-success: #155724;
+  --yellow-warning: #FFC107;
+
+  --cor-marrom-profundo: var(--text-primary);
+  --cor-creme-claro: var(--primary-bg);
+  --cor-caramelo-suave: var(--accent-red);
+  --cor-rosa-po: #EBD4D0;
+  --cor-verde-salvia: #A3B18A;
+  --cor-branco-puro: var(--card-bg);
+  --cor-cinza-medio: var(--text-secondary);
+  --cor-marrom-claro: var(--accent-brown);
+  --cor-erro: var(--accent-red);
+  --cor-sucesso: #155724;
+  --cor-aviso: #FFC107;
+
+  --fonte-principal: var(--font-family);
+  --fonte-titulos: var(--font-title);
+  --raio-borda-padrao: var(--border-radius-small);
+  --sombra-suave: var(--shadow-light);
+  --sombra-media: var(--shadow-medium);
+
+  --background-light: var(--primary-bg);
+  --foreground-light: var(--text-primary);
+  --primary-color: var(--accent-red);
+  --secondary-color: var(--text-secondary);
+  --border-color: var(--border-light);
+  --card-background: var(--card-bg);
+  --shadow-sm: var(--shadow-light);
+  --shadow-md: var(--shadow-medium);
+}
+
+/* Para o tema escuro, podemos inverter ou ajustar conforme necessário */
+/* No momento, o foco é no tema claro conforme a paleta fornecida */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Manter a paleta clara mesmo no modo escuro para consistência */
+    --background-light: var(--cream-light);
+    --foreground-light: var(--brown-deep);
+    --primary-color: var(--caramel);
+    --secondary-color: var(--gray-medium);
+    --border-color: var(--brown-light);
+    --card-background: var(--white);
+  }
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: var(--font-family);
+  line-height: 1.6;
+  font-size: 16px;
+  color: var(--text-primary);
+  background-color: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: var(--accent-red);
+  text-decoration: none;
+  transition: color 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--text-primary);
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* Remover sublinhado de cards, títulos e elementos não-link */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover,
+.card:hover, .produto-card:hover, .reviewCartItem:hover,
+.reviewSection:hover, .paymentOptionButton:hover,
+div:hover, section:hover, article:hover, span:hover {
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+
+/* Garantir que apenas links tenham sublinhado */
+a:not(.no-underline):hover {
+  text-decoration: underline;
+}
+
+/* Classe para links que não devem ter sublinhado */
+.no-underline:hover {
+  text-decoration: none !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--border-radius-small);
+}
+
+/* Estilos base para botões */
+button, input[type="button"], input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: var(--border-radius-small);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: 600;
+  font-family: var(--font-family);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button.primary, input[type="submit"].primary {
+  background-color: var(--accent-red);
+  color: var(--card-bg);
+  border-color: var(--accent-red);
+  box-shadow: var(--shadow-light);
+}
+
+button.primary:hover, input[type="submit"].primary:hover {
+  background-color: #c0392b; /* Vermelho um pouco mais escuro */
+  border-color: #c0392b;
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+button.secondary {
+  background-color: var(--accent-brown);
+  color: var(--card-bg);
+  border-color: var(--accent-brown);
+}
+
+button.secondary:hover {
+  background-color: #6a3510; /* Marrom mais escuro */
+  border-color: #6a3510;
+  box-shadow: var(--shadow-medium);
+  transform: translateY(-2px);
+}
+
+/* Estilos base para inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--border-radius-small);
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-family: var(--font-family);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-red);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.25);
+}
+
+/* Utilitários */
+.container {
+  width: 100%;
+  max-width: 414px; /* iPhone 12 Pro width */
+  margin: 0 auto;
+  padding: 0;
+  background-color: var(--page-bg);
+}
+
+/* Melhorias para Desktop */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px;
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Melhorar tipografia para desktop */
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 2rem; }
+  h4 { font-size: 1.75rem; }
+  
+  /* Melhorar espaçamento para desktop */
+  main {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+  }
+  
+  /* Botões maiores e mais elegantes em desktop */
+  button, input[type="button"], input[type="submit"] {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    min-width: 140px;
+  }
+  
+  /* Inputs com melhor espaçamento */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    padding: 16px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1400px;
+  }
+  
+  /* Tipografia ainda maior para telas grandes */
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 3rem; }
+  h3 { font-size: 2.25rem; }
+  h4 { font-size: 2rem; }
+}
+
+/* Melhorias para tipografia */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  font-family: var(--font-title);
+  color: var(--text-primary);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+
+main {
+  padding-top: 0; 
+  padding-bottom: 0; 
+}
+
+/* Adicionar classe para esconder visualmente mas manter acessível para leitores de tela */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* Melhorias para texto e contraste */
+p, span, div, li, td, th {
+  color: var(--text-primary);
+}
+
+/* Garantir que todos os cards e seções tenham fundo branco */
+.card, .reviewSection, .stepContainer, .cartItemsSection, 
+.containerEmpty, .reviewCartItem, .paymentOptionButton {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Melhorar contraste em elementos de formulário */
+label {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Reset de margens e paddings para elementos comuns */
+section, div, ul, li, p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remover bordas de foco padrão e usar box-shadow */
+*:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.3);
+}
+

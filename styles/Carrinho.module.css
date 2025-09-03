@@ -1,0 +1,564 @@
+/* styles/Carrinho.module.css - Refatorado com a Nova Paleta */
+
+.container, .carrinhoContainer /* Unificando para consistência, se .container for o wrapper principal */ {
+  padding: 2rem 1rem; /* Ajuste de padding para mobile */
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--cor-creme-claro);
+}
+
+.pageTitle {
+  font-family: var(--fonte-titulos);
+  color: var(--cor-marrom-profundo);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+}
+
+.sectionTitle {
+  font-family: var(--fonte-titulos);
+  color: var(--cor-marrom-profundo);
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--cor-caramelo-suave);
+  font-size: 1.5rem;
+}
+
+/* Estilos para a lista de itens do carrinho */
+.cartItemsSection {
+  margin-bottom: 2.5rem;
+  background-color: var(--cor-rosa-po); /* Alterado de --cor-branco-puro para --cor-rosa-po */
+  padding: 1.5rem;
+  border-radius: var(--raio-borda-padrao);
+  box-shadow: var(--sombra-media);
+}
+
+.emptyCartMessage {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--cor-cinza-medio);
+  font-size: 1.1rem;
+  background-color: var(--cor-branco-puro); /* Manter mensagem de carrinho vazio em fundo branco para destaque */
+  border-radius: var(--raio-borda-padrao);
+}
+
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.cartTable th,
+.cartTable td {
+  border-bottom: 1px solid var(--cor-cinza-medio); /* Borda mais suave */
+  padding: 0.8rem 0.5rem; /* Ajuste de padding */
+  text-align: left;
+  vertical-align: middle;
+  color: var(--cor-marrom-profundo);
+}
+
+.cartTable th {
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--cor-marrom-claro);
+}
+
+.tableHeaderImage { width: 80px; text-align: center; }
+.tableHeaderName { /* Nome do produto */ }
+.tableHeaderSize { width: 100px; }
+.tableHeaderAddons { width: 120px; }
+.tableHeaderQuantity { width: 90px; text-align: center; }
+.tableHeaderSubtotal { width: 100px; text-align: right; }
+.tableHeaderActions { width: 60px; text-align: center; }
+
+.cartItemRow {
+    background-color: var(--cor-branco-puro); /* Linhas da tabela (produtos) em branco para contraste com section rosa */
+}
+
+.cartItemRow:last-child td {
+  border-bottom: none;
+}
+
+.cartItemImageCell {
+  padding-right: 1rem;
+}
+
+.cartItemImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--raio-borda-padrao);
+  background-color: var(--cor-creme-claro); /* Fundo para imagem */
+}
+
+.imagePlaceholder {
+  width: 60px;
+  height: 60px;
+  background-color: var(--cor-creme-claro);
+  color: var(--cor-cinza-medio);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  border-radius: var(--raio-borda-padrao);
+}
+
+.cartItemName {
+  font-weight: 500;
+}
+
+.cartItemSize, .cartItemAddons {
+  font-size: 0.9rem;
+  color: var(--cor-marrom-claro);
+  word-break: break-word; /* Adicionado para quebrar palavras longas */
+}
+
+.quantityInput {
+  width: 60px;
+  padding: 0.5rem;
+  text-align: center;
+  border: 1px solid var(--cor-cinza-medio);
+  border-radius: var(--raio-borda-padrao);
+  background-color: var(--cor-branco-puro);
+  color: var(--cor-marrom-profundo);
+  font-size: 1rem;
+}
+
+.cartItemSubtotal {
+  font-weight: 600;
+  text-align: right;
+}
+
+.removeButton {
+  background-color: transparent;
+  color: var(--cor-erro);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.3rem;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.removeButton:hover {
+  color: var(--cor-branco-puro);
+  background-color: var(--cor-erro);
+}
+
+/* Correção para o total do pedido no desktop */
+.cartTotalRow td {
+  border-top: 2px solid var(--cor-marrom-claro);
+  font-weight: bold;
+  padding-top: 1rem;
+  background-color: transparent; /* Garantir que o total não pegue o fundo da linha de item */
+}
+
+.cartTotalLabel {
+  text-align: right;
+  font-size: 1.1rem;
+}
+
+.cartTotalPrice {
+  text-align: right;
+  font-size: 1.3rem;
+  color: var(--cor-caramelo-suave);
+}
+
+/* Garantir que o total do pedido esteja alinhado no desktop */
+tfoot .cartTotalRow {
+  background-color: transparent !important;
+}
+
+tfoot .cartTotalRow td {
+  text-align: right !important;
+}
+
+.cartActionsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap; /* Para mobile */
+  gap: 1rem;
+}
+
+/* Botões de ação no carrinho */
+.cartActionButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+/* Botão para iniciar o checkout, adicionado */
+.proceedToCheckoutButton {
+    background-color: var(--cor-caramelo-suave);
+    color: var(--cor-branco-puro);
+    border-color: var(--cor-caramelo-suave);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--raio-borda-padrao);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    width: 100%; /* Ocupar largura total no mobile */
+    margin-top: 1rem;
+}
+
+.proceedToCheckoutButton:hover {
+    background-color: #a96f38; /* Caramelo mais escuro */
+    border-color: #a96f38;
+    box-shadow: var(--sombra-media);
+}
+
+.clearCartButton,
+.continueShoppingButton {
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--raio-borda-padrao);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.clearCartButton {
+  background-color: var(--cor-rosa-po);
+  color: var(--cor-marrom-profundo);
+  border-color: var(--cor-rosa-po);
+}
+
+.clearCartButton:hover {
+  background-color: #e0c0bc; /* Rosa pó um pouco mais escuro */
+  border-color: #e0c0bc;
+  box-shadow: var(--sombra-suave);
+}
+
+.continueShoppingButton {
+  background-color: var(--cor-verde-salvia);
+  color: var(--cor-branco-puro);
+  border-color: var(--cor-verde-salvia);
+}
+
+.continueShoppingButton:hover {
+  background-color: #909d77; /* Verde sálvia um pouco mais escuro */
+  border-color: #909d77;
+  box-shadow: var(--sombra-suave);
+}
+
+/* Estilos para o container de carrinho vazio (já existente, apenas para referência) */
+.containerEmpty {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: var(--cor-branco-puro);
+  border-radius: var(--raio-borda-padrao);
+  box-shadow: var(--sombra-media);
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.containerEmpty h2 {
+  color: var(--cor-marrom-profundo);
+  margin-bottom: 1rem;
+}
+
+.containerEmpty p {
+  color: var(--cor-cinza-medio);
+  margin-bottom: 1.5rem;
+}
+
+.containerEmpty .continueShoppingButton { /* Reutilizando o estilo do botão */
+  background-color: var(--cor-caramelo-suave);
+  color: var(--cor-branco-puro);
+  border-color: var(--cor-caramelo-suave);
+}
+
+.containerEmpty .continueShoppingButton:hover {
+  background-color: #a96f38; /* Caramelo mais escuro */
+  border-color: #a96f38;
+}
+
+/* Responsividade para a tabela do carrinho */
+@media (max-width: 768px) {
+  .cartTable thead {
+    display: none; /* Esconder cabeçalho da tabela em mobile */
+  }
+  .cartTable, .cartTable tbody, .cartTable tr, .cartTable td {
+    display: block;
+    width: 100%;
+  }
+  .cartTable tr.cartItemRow { /* Aplicar ao cartItemRow especificamente */
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--cor-cinza-medio);
+    border-radius: var(--raio-borda-padrao);
+    padding: 1rem;
+    background-color: var(--cor-branco-puro); /* Cards de produto individuais permanecem brancos */
+    box-shadow: var(--sombra-suave);
+  }
+  .cartTable td {
+    text-align: right; /* Alinhar texto à direita */
+    padding-left: 45%; /* Espaço para o label - ajustado */
+    position: relative;
+    border-bottom: 1px dashed var(--cor-cinza-medio); /* Linha separadora entre campos */
+    min-height: 30px; /* Altura mínima para melhor toque */
+    display: flex; /* Para alinhar o conteúdo e o label */
+    align-items: center; /* Alinhar verticalmente */
+    justify-content: flex-end; /* Alinhar conteúdo à direita */
+    word-break: break-word; /* Quebrar palavras longas */
+  }
+  .cartTable tr.cartItemRow td:last-child {
+    border-bottom: none;
+  }
+  .cartTable td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    width: calc(45% - 20px); /* Largura do label - ajustado */
+    padding-right: 10px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--cor-marrom-claro);
+    white-space: normal; /* Permitir quebra de linha no label se necessário */
+    display: flex; /* Para alinhar com o conteúdo */
+    align-items: center; /* Alinhar verticalmente */
+    height: 100%; /* Ocupar altura do td */
+  }
+
+  .cartItemImageCell {
+    text-align: center; /* Centralizar imagem */
+    padding-left: 0; /* Remover padding-left para centralizar melhor */
+    justify-content: center; /* Centralizar conteúdo do flex container */
+  }
+  .cartItemImageCell::before {
+    display: none; /* Não precisa de label para imagem */
+  }
+  .cartItemImage {
+    margin: 0; /* Remover margens automáticas */
+  }
+  .quantityInput {
+    width: 50px; /* Menor input de quantidade */
+  }
+
+  /* Ajustes para a linha de Total do Pedido no mobile */
+  .cartTable .cartTotalRow {
+    display: flex !important; 
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 1rem 0px !important; /* Ajustado padding para alinhar com cards de produto */
+    border-top: 2px solid var(--cor-marrom-profundo) !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+    background-color: transparent !important; /* Fundo transparente para a linha do total */
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    border-left: none !important; /* Remover bordas laterais se houver */
+    border-right: none !important;
+  }
+
+  .cartTable .cartTotalRow td {
+    display: block !important; 
+    width: auto !important;    
+    flex-basis: auto !important; 
+    padding: 0 !important;
+    border-bottom: none !important;
+    position: static !important; 
+    text-align: left !important; 
+    background-color: transparent !important;
+    min-height: auto !important;
+  }
+
+  .cartTable .cartTotalRow td::before {
+    display: none !important;
+  }
+
+  .cartTable .cartTotalRow .cartTotalLabel {
+    font-weight: bold !important;
+    color: var(--cor-marrom-profundo) !important;
+    margin-right: 10px !important;
+    text-align: left !important;
+    font-size: 1.1rem !important; 
+    flex-shrink: 0;
+  }
+
+  .cartTable .cartTotalRow .cartTotalPrice {
+    font-weight: bold !important;
+    color: var(--cor-caramelo-suave) !important;
+    text-align: right !important;
+    font-size: 1.3rem !important; 
+    flex-grow: 1;
+    white-space: nowrap;
+  }
+}
+
+/* Fallback for very small screens if horizontal alignment breaks - stacking */
+@media (max-width: 360px) {
+  .cartTable .cartTotalRow {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .cartTable .cartTotalRow .cartTotalLabel {
+    margin-right: 0 !important;
+    margin-bottom: 0.25rem !important;
+    text-align: left !important;
+  }
+  .cartTable .cartTotalRow .cartTotalPrice {
+    text-align: left !important;
+    white-space: normal !important;
+  }
+}
+
+
+/* Fixed Footer for Mobile Cart Actions */
+.fixedCartFooter {
+  display: none; /* Hidden by default, shown on mobile */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--cor-branco-puro);
+  padding: 1rem 1.25rem;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  border-top: 1px solid var(--cor-marrom-claro);
+  z-index: 1000;
+}
+
+.fixedCartFooterButton {
+  width: 100%;
+  padding: 1rem;
+  background: var(--cor-caramelo-suave);
+  color: var(--cor-branco-puro);
+  border: none;
+  border-radius: var(--raio-borda-padrao);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--sombra-media);
+  transition: all 0.2s ease;
+}
+
+.fixedCartFooterButton:hover {
+  background-color: #a96f38; /* Caramelo mais escuro */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.fixedCartFooterButton:disabled {
+  background: var(--cor-cinza-medio) !important;
+  color: var(--cor-creme-claro) !important;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
+
+@media (max-width: 768px) {
+  .fixedCartFooter {
+    display: block; /* Show on mobile */
+  }
+  .carrinhoContainer {
+    padding-bottom: 100px; /* Add padding to prevent content from being hidden by fixed footer */
+  }
+}
+
+/* Helper classes */
+.hideOnMobile {
+  display: flex !important;
+}
+
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none !important;
+  }
+}
+
+.hideOnDesktop {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .hideOnDesktop {
+    display: flex !important;
+  }
+}
+
+
+/* Estilos para o controle de quantidade personalizado */
+.quantityControl {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centralizar na célula da tabela */
+  gap: 0.5rem; /* Espaço entre botões e número */
+}
+
+.quantityButton {
+  background-color: var(--cor-creme-claro); /* Fundo suave */
+  border: 1px solid var(--cor-marrom-claro);
+  color: var(--cor-marrom-profundo);
+  padding: 0.3rem; /* Padding menor para botões de ícone */
+  border-radius: 50%; /* Botões redondos */
+  cursor: pointer;
+  width: 30px; /* Tamanho fixo */
+  height: 30px; /* Tamanho fixo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.quantityButton img {
+  display: block; /* Garantir que a imagem não tenha espaço extra */
+  width: 14px; /* Tamanho do ícone */
+  height: 14px; /* Tamanho do ícone */
+}
+
+.quantityButton:hover {
+  background-color: var(--cor-marrom-claro);
+  transform: scale(1.1);
+}
+
+.quantityButton:active {
+  transform: scale(0.95);
+}
+
+.quantityDisplay {
+  font-weight: 600;
+  font-size: 1.1rem;
+  min-width: 30px; /* Largura mínima para evitar saltos */
+  text-align: center;
+  color: var(--cor-marrom-profundo);
+}
+
+/* Ajustes para mobile no controle de quantidade */
+@media (max-width: 768px) {
+  .cartTable td.cartItemQuantity {
+    padding-left: 45%; /* Manter o padding para o label */
+    justify-content: flex-end; /* Alinhar o controle à direita */
+  }
+  .quantityControl {
+     justify-content: flex-end; /* Alinhar o controle à direita dentro do td */
+     width: auto; /* Permitir que o controle se ajuste */
+     padding-right: 10px; /* Pequeno espaço da borda direita */
+  }
+  .quantityButton {
+    width: 28px;
+    height: 28px;
+  }
+  .quantityButton img {
+    width: 12px;
+    height: 12px;
+  }
+  .quantityDisplay {
+    font-size: 1rem;
+    min-width: 25px;
+  }
+}
+

@@ -1,0 +1,263 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formRow {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.formRow .formGroup {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.inputField,
+.selectField,
+.textareaField {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.textareaField {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.searchButton,
+.saveButton,
+.addButton,
+.editButton {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.searchButton:hover,
+.saveButton:hover,
+.addButton:hover,
+.editButton:hover {
+  background-color: #357abD;
+}
+
+.removeButton {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.removeButton:hover {
+  background-color: #c0392b;
+}
+
+.error {
+  color: #e74c3c;
+  background-color: #fadbd8;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.success {
+  color: #27ae60;
+  background-color: #d4efdf;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.info {
+  color: #3498db;
+  background-color: #ebf5fb;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.addressDetails {
+  background-color: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #4a90e2;
+}
+
+.manualAdjustment {
+  font-style: italic;
+  color: #e67e22;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+}
+
+/* Estilos específicos para configurações de agendamento */
+.scheduleSettingsContainer {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.formSection {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.formSection h3 {
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  font-size: 1.3rem;
+}
+
+.modeDescription {
+  background-color: #f0f7ff;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin: 1rem 0;
+  border-left: 4px solid #3498db;
+}
+
+.timeSlotControls {
+  margin-bottom: 1.5rem;
+}
+
+.timeInputGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.timeInput, .dateInput {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.weekdaySection {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+}
+
+.weekdaySection h4 {
+  margin-bottom: 0.75rem;
+  color: #34495e;
+}
+
+.timeSlotList {
+  margin-bottom: 1rem;
+}
+
+.timeSlotItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: white;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e0e0e0;
+}
+
+.noSlotsMessage, .noSpecialDatesMessage {
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+.specialDateControls {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f0f7ff;
+  border-radius: 6px;
+}
+
+.specialDatesList {
+  margin-top: 1.5rem;
+}
+
+.specialDateItem {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+  border-radius: 6px;
+  border-left: 4px solid #9b59b6;
+}
+
+.specialDateHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.specialDateHeader h5 {
+  margin: 0;
+  color: #34495e;
+  font-size: 1.1rem;
+}
+
+.specialDateActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.specialDateInfo {
+  margin-bottom: 1rem;
+}
+
+.specialDateSlots ul {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+.specialDateEditForm {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #ccc;
+}
+
+.formActions {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.saveButton {
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+}
+
+.saveButton:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}

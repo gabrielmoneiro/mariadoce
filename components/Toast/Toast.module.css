@@ -1,0 +1,85 @@
+.toastContainerMain {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.toast {
+  padding: 15px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #111; /* Default dark text for legibility */
+  opacity: 0.95;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  min-width: 280px; /* Minimum width for better readability */
+  max-width: 400px;
+  animation: fadeInOut 5s ease forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-20px); }
+  10% { opacity: 0.95; transform: translateY(0); }
+  90% { opacity: 0.95; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+.toast.success {
+  background-color: #4CAF50; /* Green background */
+  color: #fff; /* White text for green background */
+}
+
+.toast.error {
+  background-color: #F44336; /* Red background */
+  color: #fff; /* White text for red background */
+}
+
+.icon {
+  font-size: 1.5rem;
+}
+
+.message {
+  flex-grow: 1;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: inherit; /* Inherits color from parent (.success or .error) */
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0 5px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
+
+/* Ensure text color is dark on light backgrounds if not overridden by specific types */
+.toast:not(.success):not(.error) {
+    background-color: #f0f0f0; /* Example light background */
+    color: #111;
+}
+
+/* Adjustments for legibility if a toast type has a light background but doesn't set text color */
+.toast.success .message,
+.toast.success .icon,
+.toast.error .message,
+.toast.error .icon {
+    color: #fff; /* Ensuring high contrast for default success/error */
+}
+
+/* If a custom toast type is added with a light background, ensure text is dark */
+/* Example: .toast.warning { background-color: #ffeb3b; color: #111; } */

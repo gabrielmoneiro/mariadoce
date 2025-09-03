@@ -1,0 +1,180 @@
+/* Header.module.css - Novo design baseado na imagem MariaDoce */
+
+.header {
+  background-color: var(--card-bg);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.headerContainer {
+  max-width: 414px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  width: auto;
+  margin-right: var(--spacing-sm);
+  border-radius: 0;
+}
+
+.siteTitle {
+  font-family: var(--font-title);
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.cartIconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+}
+
+.cartIconContainer:hover {
+  color: var(--accent-red);
+  text-decoration: none;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--accent-red);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid var(--card-bg);
+}
+
+.mobileMenuButton {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+}
+
+.navLinks {
+  display: none;
+}
+
+/* Mobile Menu */
+@media (max-width: 768px) {
+  .mobileMenuButton {
+    display: block;
+  }
+  
+  .navLinks {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-light);
+    box-shadow: var(--shadow-medium);
+    z-index: 999;
+  }
+  
+  .navLinks.open {
+    display: block;
+  }
+  
+  .navLink {
+    display: block;
+    padding: var(--spacing-md);
+    text-decoration: none;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-light);
+    transition: background-color 0.2s ease;
+  }
+  
+  .navLink:hover {
+    background-color: var(--primary-bg);
+    text-decoration: none;
+  }
+  
+  .whatsappButton {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    background-color: #25D366;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+    justify-content: center;
+    margin: var(--spacing-md);
+    border-radius: var(--border-radius-small);
+  }
+  
+  .whatsappButton:hover {
+    background-color: #128C7E;
+  }
+  
+  .mobileOnly {
+    display: flex;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 375px) {
+  .headerContainer {
+    max-width: 375px;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .siteTitle {
+    font-size: 20px;
+  }
+  
+  .logo {
+    height: 36px;
+  }
+  
+  .headerActions {
+    gap: var(--spacing-sm);
+  }
+}
+

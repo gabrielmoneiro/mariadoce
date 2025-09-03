@@ -1,0 +1,215 @@
+/* SearchBar.module.css - Nova barra de pesquisa expansível com melhorias */
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.searchBox {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-radius: 8px;
+  height: 60px;
+  width: 60px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.searchContainer.expanded .searchBox {
+  width: 280px;
+  background: linear-gradient(135deg, var(--cor-creme-claro), #f5f5dc);
+  border: 2px solid #8B4513;
+  border-radius: 25px;
+}
+
+.searchContainer.animating .searchBox {
+  transform: scale(1.02);
+}
+
+.searchForm {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  color: #8B4513;
+  font-size: 16px;
+  padding: 0 20px 0 20px;
+  outline: none;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s ease;
+  font-family: inherit;
+  font-weight: 500;
+}
+
+.searchInput.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.searchInput::placeholder {
+  color: rgba(139, 69, 19, 0.7);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.searchButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.searchButton:hover {
+  background: rgba(139, 69, 19, 0.1);
+  border-radius: 8px;
+}
+
+.searchIcon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: brightness(0) saturate(100%) invert(25%) sepia(15%) saturate(1500%) hue-rotate(15deg) brightness(95%) contrast(85%);
+}
+
+.closeIcon {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.searchIcon.hidden,
+.closeIcon.hidden {
+  opacity: 0;
+  transform: rotate(180deg) scale(0.5);
+}
+
+.closeIcon.visible {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+
+
+/* Efeito de pulso quando ativo */
+.searchContainer.expanded .searchBox::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--cor-caramelo-suave), var(--cor-marrom-profundo));
+  border-radius: 50px;
+  z-index: -1;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+/* Responsividade melhorada */
+@media (max-width: 992px) {
+  .searchBox {
+    height: 58px;
+    width: 58px;
+  }
+  
+  .searchButton {
+    height: 58px;
+    width: 58px;
+  }
+
+  .searchContainer.expanded .searchBox {
+    width: 240px;
+  }
+  
+  .clearButton {
+    right: 55px;
+  }
+}
+
+@media (max-width: 768px) {
+  .searchBox {
+    width: 56px;
+    height: 56px;
+  }
+
+  .searchButton {
+    width: 56px;
+    height: 56px;
+  }
+
+  .searchContainer.expanded .searchBox {
+    width: 220px;
+    max-width: 60vw;
+  }
+
+  .clearButton {
+    right: 58px;
+  }
+  
+  .searchInput {
+    font-size: 15px;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchBox {
+    width: 58px;
+    height: 58px;
+  }
+
+  .searchButton {
+    width: 58px;
+    height: 58px;
+  }
+  
+  .searchContainer.expanded .searchBox {
+    width: 200px;
+    max-width: 55vw;
+  }
+  
+  .clearButton {
+    right: 60px;
+    width: 26px;
+    height: 26px;
+  }
+  
+  .searchInput {
+    font-size: 14px;
+    padding: 0 12px;
+  }
+  
+  .searchInput::placeholder {
+    font-size: 13px;
+  }
+}
+
+

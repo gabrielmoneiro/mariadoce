@@ -1,0 +1,356 @@
+/* Header.module.css - Novo design com menu lateral */
+
+.header {
+  background-color: var(--primary-bg);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.headerContainer {
+  max-width: 414px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--spacing-md);
+  position: relative; /* Adicione esta linha */
+}
+
+/* Seção do menu à esquerda */
+.menuSection {
+  display: flex;
+  align-items: center;
+  width: 60px; /* Largura fixa para equilibrar com o carrinho */
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-small);
+  transition: background-color 0.2s ease;
+}
+
+.menuButton:hover {
+  background-color: var(--primary-bg);
+}
+
+/* Logo no centro */
+.logoContainer {
+  position: absolute; /* Adicione esta linha */
+  left: 50%; /* Adicione esta linha */
+  transform: translateX(-50%); /* Adicione esta linha */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Remova 'flex-grow: 1;' se estiver aqui */
+}
+
+.logoLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  border-radius: 0;
+  object-fit: contain;
+}
+
+/* Seção do carrinho à direita */
+.cartSection {
+  display: flex;
+  align-items: center;
+  width: 60px; /* Largura fixa para equilibrar com o menu */
+  justify-content: flex-end;
+}
+
+.cartIconContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: color 0.2s ease;
+  border-radius: var(--border-radius-small);
+}
+
+.cartIconContainer:hover {
+  color: var(--accent-red);
+  background-color: var(--primary-bg);
+  text-decoration: none;
+}
+
+.cartBadge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background-color: var(--accent-red);
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid var(--card-bg);
+}
+
+/* Menu lateral */
+.sideMenu {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Inicialmente escondido à esquerda */
+  width: 300px;
+  height: 100vh;
+  background-color: var(--card-bg);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  transition: left 0.3s ease;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border-light);
+}
+
+.sideMenuOpen {
+  left: 0 !important; /* Desliza da esquerda para a direita */
+}
+
+.sideMenuHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--spacing-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.closeMenuButton {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-small);
+  transition: background-color 0.2s ease;
+}
+
+.closeMenuButton:hover {
+  background-color: var(--primary-bg);
+}
+
+.sideMenuNav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-md) 0;
+}
+
+.sideMenuLink {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+}
+
+.sideMenuLink:hover {
+  background-color: var(--primary-bg);
+  text-decoration: none;
+}
+
+.sideMenuWhatsappButton {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  font-size: 16px;
+}
+
+.sideMenuWhatsappButton:hover {
+  background-color: var(--primary-bg);
+}
+
+/* Overlay para fechar menu */
+.menuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Responsivo */
+@media (max-width: 375px) {
+  .headerContainer {
+    max-width: 375px;
+    padding: 0 var(--spacing-sm);
+  }
+  
+  .logo {
+    height: 50px;
+  }
+  
+  .sideMenu {
+    width: 280px;
+    left: -280px;
+  }
+}
+
+@media (max-width: 320px) {
+  .sideMenu {
+    width: 260px;
+    left: -260px;
+  }
+  
+  .logo {
+    height: 45px;
+  }
+}
+
+/* Para desktop, manter o mesmo comportamento */
+@media (min-width: 769px) {
+  .header {
+    padding: var(--spacing-lg) 0;
+  }
+  
+  .headerContainer {
+    max-width: 1200px;
+    padding: 0 var(--spacing-lg);
+  }
+  
+  /* Em desktop, podemos mostrar navegação horizontal */
+  .menuSection {
+    width: auto;
+    flex-grow: 1;
+  }
+  
+  .menuButton {
+    display: none; /* Esconder botão de menu em desktop */
+  }
+  
+  /* Navegação horizontal para desktop */
+  .desktopNav {
+    display: flex;
+    gap: var(--spacing-xl);
+    align-items: center;
+  }
+  
+  .desktopNavLink {
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 16px;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius-small);
+    transition: all 0.2s ease;
+  }
+  
+  .desktopNavLink:hover {
+    background-color: var(--secondary-pink);
+    color: var(--accent-red);
+    text-decoration: none;
+  }
+  
+  /* 🔥 Centralizar logo também no desktop */
+  .logoContainer {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; 
+    justify-content: center;
+  }
+  
+  .logo {
+    height: 80px;
+  }
+  
+  .cartSection {
+    width: auto;
+  }
+  
+  .cartIconContainer {
+    padding: var(--spacing-md);
+  }
+  
+  .cartBadge {
+    width: 24px;
+    height: 24px;
+    font-size: 14px;
+  }
+  
+  /* Menu lateral ainda disponível mas com largura maior */
+  .sideMenu {
+    width: 400px;
+    left: -400px;
+  }
+  
+  .menuButton {
+    display: flex;
+    opacity: 0.7;
+  }
+  
+  .menuButton:hover {
+    opacity: 1;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  .headerContainer {
+    max-width: 1400px;
+  }
+  
+  .desktopNav {
+    gap: var(--spacing-xl) * 1.5;
+  }
+  
+  .desktopNavLink {
+    font-size: 18px;
+    padding: var(--spacing-md) var(--spacing-lg);
+  }
+  
+  .logo {
+    height: 90px;
+  }
+  
+  .sideMenu {
+    width: 450px;
+    left: -450px;
+  }
+}
+
+/* Classe para navegação desktop - adicionar no componente */
+.desktopNav {
+  display: none; /* Escondido por padrão (mobile) */
+}
+
+@media (min-width: 769px) {
+  .desktopNav {
+    display: flex;
+  }
+}
+

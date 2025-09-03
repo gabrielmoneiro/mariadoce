@@ -1,0 +1,278 @@
+.categoryManager {
+  background: white;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.error {
+  background: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.addCategory {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.addButton:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.addButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.categoriesList {
+  border: 1px solid #eee;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.emptyState {
+  padding: 40px;
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.categoryItem {
+  border-bottom: 1px solid #eee;
+}
+
+.categoryItem:last-child {
+  border-bottom: none;
+}
+
+.viewMode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+}
+
+.categoryName {
+  font-weight: 500;
+  color: #333;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.editButton,
+.deleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.editButton {
+  background: #f8f9fa;
+  color: #6c757d;
+}
+
+.editButton:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.deleteButton {
+  background: #f8f9fa;
+  color: #dc3545;
+}
+
+.deleteButton:hover {
+  background: #f5c6cb;
+  color: #721c24;
+}
+
+.editMode {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+}
+
+.editActions {
+  display: flex;
+  gap: 8px;
+}
+
+.saveButton,
+.cancelButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.saveButton {
+  background: #28a745;
+  color: white;
+}
+
+.saveButton:hover {
+  background: #218838;
+}
+
+.cancelButton {
+  background: #6c757d;
+  color: white;
+}
+
+.cancelButton:hover {
+  background: #5a6268;
+}
+
+.deleteConfirm {
+  background: #fff3cd;
+  border-top: 1px solid #ffeaa7;
+  padding: 16px;
+}
+
+.deleteConfirm p {
+  margin: 0 0 12px 0;
+  color: #856404;
+  font-weight: 500;
+}
+
+.confirmActions {
+  display: flex;
+  gap: 12px;
+}
+
+.confirmDelete,
+.cancelDelete {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.confirmDelete {
+  background: #dc3545;
+  color: white;
+}
+
+.confirmDelete:hover {
+  background: #c82333;
+}
+
+.cancelDelete {
+  background: #6c757d;
+  color: white;
+}
+
+.cancelDelete:hover {
+  background: #5a6268;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .categoryManager {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .addCategory {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .viewMode {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .actions {
+    align-self: flex-end;
+  }
+  
+  .editMode {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+  
+  .editActions {
+    align-self: flex-end;
+  }
+  
+  .confirmActions {
+    flex-direction: column;
+  }
+}
+
