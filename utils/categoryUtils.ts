@@ -1,4 +1,5 @@
 // Utilitário para normalizar nomes de categorias e mapear variações
+// Esta função pode ser menos crítica se a filtragem for por ID, mas ainda útil para exibição.
 export const normalizeCategoryName = (categoryName: string): string => {
   const normalized = categoryName.toLowerCase().trim();
   
@@ -26,23 +27,24 @@ export const normalizeCategoryName = (categoryName: string): string => {
     'sobremesa': 'Sobremesas',
     'sobremesas': 'Sobremesas',
     'dessert': 'Sobremesas',
-    'desserts': 'Sobremesas'
+    'desserts': 'Sobremesas',
+    'bolos & tortas': 'Bolos & Tortas',
+    'bolos e tortas': 'Bolos & Tortas',
+    'cafés e cappuccinos': 'Cafés e Cappuccinos',
+    'cafes e cappuccinos': 'Cafés e Cappuccinos',
   };
 
-  return categoryMappings[normalized] || categoryName;
+  return categoryMappings[normalized] || 
+         normalized.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 };
 
-// Função para verificar se um produto pertence a uma categoria
-export const productBelongsToCategory = (product: any, categoryName: string): boolean => {
-  const productCategory = product.category || product.categoryName || '';
-  const normalizedProductCategory = normalizeCategoryName(productCategory);
-  const normalizedSearchCategory = normalizeCategoryName(categoryName);
-  
-  return normalizedProductCategory === normalizedSearchCategory ||
-         productCategory.toLowerCase() === categoryName.toLowerCase();
+// Função para verificar se um produto pertence a uma categoria pelo ID
+export const productBelongsToCategory = (product: any, categoryId: string): boolean => {
+  // Compara o categoryId do produto diretamente com o categoryId selecionado
+  return product.categoryId === categoryId;
 };
 
-// Função para obter todas as variações de uma categoria
+// Função para obter todas as variações de uma categoria (manter como está ou ajustar conforme necessidade)
 export const getCategoryVariations = (categoryName: string): string[] => {
   const normalized = normalizeCategoryName(categoryName);
   const variations: string[] = [categoryName, normalized];
@@ -65,4 +67,5 @@ export const getCategoryVariations = (categoryName: string): string[] => {
   
   return [...new Set(variations)]; // Remove duplicatas
 };
+
 

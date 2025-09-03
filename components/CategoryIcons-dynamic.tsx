@@ -10,7 +10,7 @@ interface Category {
 }
 
 interface CategoryIconsProps {
-  onCategorySelect?: (category: string) => void;
+  onCategorySelect?: (categoryId: string) => void; // Alterado para passar categoryId
 }
 
 // Mapeamento de ícones para categorias comuns
@@ -70,9 +70,9 @@ const CategoryIconsDynamic: React.FC<CategoryIconsProps> = ({ onCategorySelect }
     }
   };
 
-  const handleCategoryClick = (categoryName: string) => {
+  const handleCategoryClick = (categoryId: string) => { // Alterado para receber categoryId
     if (onCategorySelect) {
-      onCategorySelect(categoryName);
+      onCategorySelect(categoryId); // Passa o ID da categoria
     }
   };
 
@@ -117,7 +117,7 @@ const CategoryIconsDynamic: React.FC<CategoryIconsProps> = ({ onCategorySelect }
             <button
               key={category.id}
               className={styles.categoryItem}
-              onClick={() => handleCategoryClick(category.name)}
+              onClick={() => handleCategoryClick(category.id)} // Passa o ID da categoria no clique
               title={`Ver produtos da categoria: ${category.name}`}
             >
               <IconComponent className={styles.categoryIcon} size={48} />
@@ -133,4 +133,5 @@ const CategoryIconsDynamic: React.FC<CategoryIconsProps> = ({ onCategorySelect }
 };
 
 export default CategoryIconsDynamic;
+
 

@@ -46,22 +46,23 @@ const TipoPedidoPage = () => {
     return true;
   };
 
-  const handleNext = () => {
-    if (validateStep()) {
-      updateCheckoutField("tipoPedido", tipoPedido);
-      
-      // Se for retirada, pular a página de endereço e ir direto para pagamento
-      if (tipoPedido === "retirada") {
-        // Limpar dados de endereço e frete se existirem
-        updateCheckoutField("endereco", null);
-        updateCheckoutField("deliveryFee", 0);
-        updateCheckoutField("isAddressValidForDelivery", null);
-        updateCheckoutField("addressValidationMessage", "");
-        router.push(CHECKOUT_STEPS_PATHS.PAGAMENTO);
-      } else {
-        // Se for entrega, ir para a página de endereço
-        navigateToNextStep(CHECKOUT_STEPS_PATHS.ENDERECO);
-      }
+ const handleNext = () => {
+  if (validateStep()) {
+    updateCheckoutField("tipoPedido", tipoPedido);
+    
+    // Se for retirada, pular a página de endereço e ir direto para pagamento
+    if (tipoPedido === "retirada") {
+      // Limpar dados de endereço e frete se existirem
+      updateCheckoutField("endereco", null);
+      updateCheckoutField("deliveryFee", 0);
+      updateCheckoutField("isAddressValidForDelivery", null);
+      updateCheckoutField("addressValidationMessage", "");
+      router.push(CHECKOUT_STEPS_PATHS.PAGAMENTO);
+    } else {
+      // Se for entrega, ir para a página de endereço
+      // O erro está aqui. Em vez de passar a página de destino, passamos a página atual para que o contexto determine a próxima.
+      navigateToNextStep(CHECKOUT_STEPS_PATHS.TIPO_PEDIDO);
+    }
     }
   };
 

@@ -10,6 +10,7 @@ import { productBelongsToCategory } from '@/utils/categoryUtils';
 
 import CategoryIconsDynamic from '@/components/CategoryIcons-dynamic';
 import BottomNavigationNew from '@/components/BottomNavigation-new';
+ // Importar o componente Header
 
 interface OpcaoAdicional {
   nome: string;
@@ -23,6 +24,7 @@ interface Product {
   description: string;
   price: number;
   category: string; 
+  categoryId?: string; // Adicionado para armazenar o ID da categoria
   sizes: string[];
   addons: OpcaoAdicional[];
   highlight: boolean;
@@ -38,7 +40,7 @@ interface Product {
 
 interface HomeProps {
   allProducts: Product[]; // Passar todos os produtos para filtragem no cliente
-  initialCategories: string[]; // Para os botões de filtro
+  initialCategories: { id: string; name: string }[]; // Alterado para incluir ID e nome
 }
 
 const serializeProductData = (productData: any): Product => {
@@ -54,9 +56,29 @@ const serializeProductData = (productData: any): Product => {
 };
 
 const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null); // Agora armazena o ID da categoria
+  const [selectedCategoryName, setSelectedCategoryName] = useState<string | null>(null); // Para exibir o nome
   const [searchTerm, setSearchTerm] = useState<string>('');
   const router = useRouter();
+
+  // Mapeamento de IDs para nomes de categorias para exibição
+  const [categoryNamesMap, setCategoryNamesMap] = useState<Map<string, string>>(new Map());
+
+  useEffect(() => {
+    const map = new Map<string, string>();
+    initialCategories.forEach(cat => {
+      map.set(cat.id, cat.name);
+    });
+    setCategoryNamesMap(map);
+  }, [initialCategories]);
+
+  useEffect(() => {
+    if (selectedCategory && categoryNamesMap.has(selectedCategory)) {
+      setSelectedCategoryName(categoryNamesMap.get(selectedCategory)!);
+    } else {
+      setSelectedCategoryName(null);
+    }
+  }, [selectedCategory, categoryNamesMap]);
 
   // Atualizar o termo de pesquisa quando a query mudar
   useEffect(() => {
@@ -76,8 +98,8 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
     return products.filter(product => {
       const name = product.name || '';
       const description = product.description || '';
-      const category = product.category || '';
-      const categoryName = (product as any).categoryName || '';
+      const category = product.category || ''; // Nome da categoria antiga
+      const categoryName = (product as any).categoryName || ''; // Nome da categoria antiga
       
       return name.toLowerCase().includes(searchTermLower) ||
              description.toLowerCase().includes(searchTermLower) ||
@@ -89,7 +111,7 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
   // Aplicar filtros de categoria e pesquisa
   let filteredProducts = allProducts;
   
-  // Primeiro filtrar por categoria se selecionada
+  // Primeiro filtrar por categoria se selecionada (agora usando ID)
   if (selectedCategory) {
     filteredProducts = filteredProducts.filter(p => 
       productBelongsToCategory(p, selectedCategory)
@@ -108,8 +130,8 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
     }
   };
 
-  const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
+  const handleCategorySelect = (categoryId: string) => { // Recebe o ID da categoria
+    setSelectedCategory(categoryId);
     setSearchTerm('');
     router.push('/', undefined, { shallow: true });
   };
@@ -122,6 +144,7 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
 
   return (
     <div className={styles.pageContainer}>
+
       <div className={styles.mainContent}>
         {/* Search Section */}
         <section className={styles.searchSection}>
@@ -168,17 +191,17 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
           {selectedCategory && !searchTerm && (
             <div className={styles.searchResults}>
               <h2 className={styles.searchResultsTitle}>
-                {selectedCategory}
+                {selectedCategoryName || 'Carregando Categoria...'} {/* Exibe o nome da categoria */}
               </h2>
+              <button 
+                onClick={clearFilters}
+                className={styles.clearFiltersButton}
+              >
+                Ver todos os produtos
+              </button>
               {filteredProducts.length === 0 && (
                 <div className={styles.noResults}>
                   <p>Nenhum produto encontrado nesta categoria</p>
-                  <button 
-                    onClick={clearFilters}
-                    className={styles.clearFiltersButton}
-                  >
-                    Ver todos os produtos
-                  </button>
                 </div>
               )}
             </div>
@@ -197,7 +220,7 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
       </div>
 
       {/* Bottom Navigation */}
-      <BottomNavigationNew />
+      <BottomNavigationNew onHomeClick={clearFilters} />
     </div>
   );
 };
@@ -205,19 +228,16 @@ const Home: React.FC<HomeProps> = ({ allProducts, initialCategories }) => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const productsCol = collection(db, 'products');
-    // Ordenar por nome ou categoria, se desejado, ou deixar a ordenação para o cliente/filtros
-  const productSnapshot = await getDocs(query(productsCol, orderBy('name')));
+    const productSnapshot = await getDocs(query(productsCol, orderBy('name')));
 
-    
     const allProducts: Product[] = productSnapshot.docs.map(doc => 
       serializeProductData({ id: doc.id, ...doc.data() })
     );
 
-    const categoriesSet = new Set<string>();
-    allProducts.forEach(p => {
-      if (p.category) categoriesSet.add(p.category);
-    });
-    const initialCategories = Array.from(categoriesSet).sort(); // Ordenar categorias alfabeticamente
+    // Retornar as categorias com seus IDs e nomes para o frontend
+    const categoriesCol = collection(db, 'categories');
+    const categorySnapshot = await getDocs(categoriesCol);
+    const initialCategories = categorySnapshot.docs.map(doc => ({ id: doc.id, name: doc.data().name }));
 
     return {
       props: {
@@ -239,4 +259,5 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 export default Home;
+
 

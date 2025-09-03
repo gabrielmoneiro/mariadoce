@@ -5,7 +5,11 @@ import { ShoppingCart, Menu as MenuIcon, X as XIcon, MessageCircle, Home } from 
 import { useCart } from '@/context/CartContext';
 import styles from '@/styles/Header.module.css';
 
-const Header = () => {
+interface HeaderProps {
+  onClearFilters?: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onClearFilters }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { cartItems } = useCart();
   const [isClient, setIsClient] = useState(false);
@@ -46,7 +50,16 @@ const Header = () => {
 
         {/* Logo no centro */}
         <div className={styles.logoContainer}>
-          <Link href="/" className={styles.logoLink}>
+          <Link 
+            href="/"
+            className={styles.logoLink}
+            onClick={(e) => {
+              if (onClearFilters) {
+                e.preventDefault();
+                onClearFilters();
+              }
+            }}
+          >
             <img 
               src="/maria-doce-logo.png" 
               alt="Maria Doce" 

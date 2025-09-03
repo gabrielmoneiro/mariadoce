@@ -5,7 +5,11 @@ import { Home, MapPin, Info, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import styles from '@/styles/BottomNavigation.module.css';
 
-const BottomNavigationNew: React.FC = () => {
+interface BottomNavigationNewProps {
+  onHomeClick?: () => void; // Nova prop para o clique no Home
+}
+
+const BottomNavigationNew: React.FC<BottomNavigationNewProps> = ({ onHomeClick }) => {
   const router = useRouter();
   const { cartItems } = useCart();
   
@@ -50,6 +54,12 @@ const BottomNavigationNew: React.FC = () => {
               key={item.href}
               href={item.href}
               className={`${styles.navItem} ${item.isActive ? styles.active : ''}`}
+              onClick={(e) => {
+                if (item.href === '/' && onHomeClick) {
+                  e.preventDefault(); // Previne a navegação padrão do Link
+                  onHomeClick(); // Chama a função para limpar filtros
+                }
+              }}
             >
               <div className={styles.navIconContainer}>
                 <IconComponent className={styles.navIcon} size={24} />
@@ -67,4 +77,5 @@ const BottomNavigationNew: React.FC = () => {
 };
 
 export default BottomNavigationNew;
+
 

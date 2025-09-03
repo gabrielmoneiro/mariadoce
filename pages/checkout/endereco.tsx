@@ -74,10 +74,7 @@ const EnderecoPage = () => {
       router.push(CHECKOUT_STEPS_PATHS.TIPO_PEDIDO);
     }
     
-    // Redirect to pagamento if tipo is retirada (skip endereco)
-    if (checkoutData.tipoPedido === 'retirada') {
-      router.push(CHECKOUT_STEPS_PATHS.PAGAMENTO);
-    }
+
   }, [cartItems, router, checkoutData.tipoPedido]);
 
   // Fetch delivery config on mount
@@ -297,12 +294,12 @@ const EnderecoPage = () => {
 
   const handleNext = useCallback(() => {
     if (validateStep()) {
-      navigateToNextStep(CHECKOUT_STEPS_PATHS.ENDERECO);
+      navigateToNextStep(CHECKOUT_STEPS_PATHS.PAGAMENTO);
     }
   }, [validateStep, navigateToNextStep]);
 
   const handlePrev = useCallback(() => {
-    navigateToPrevStep(CHECKOUT_STEPS_PATHS.ENDERECO);
+    navigateToPrevStep(CHECKOUT_STEPS_PATHS.TIPO_PEDIDO);
   }, [navigateToPrevStep]);
 
   // Render logic
